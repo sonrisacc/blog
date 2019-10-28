@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.4.2">
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.4.2" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css?v=7.4.2">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Assumptions I’m making about you:  fairly familiar with git + gtihub  you want the blog to be available athttp:&#x2F;&#x2F;username.github.io&#x2F;projectname  Have none&#x2F; very basic hexo knowledge   If the above sou">
+<meta name="keywords" content="hexo,blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to set up a blog as github page with Hexo">
+<meta property="og:url" content="https:&#x2F;&#x2F;sonrisacc.github.io&#x2F;blog&#x2F;2019&#x2F;10&#x2F;20&#x2F;post&#x2F;index.html">
+<meta property="og:site_name" content="Sonrisa&#39;s notes">
+<meta property="og:description" content="Assumptions I’m making about you:  fairly familiar with git + gtihub  you want the blog to be available athttp:&#x2F;&#x2F;username.github.io&#x2F;projectname  Have none&#x2F; very basic hexo knowledge   If the above sou">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;sonrisacc.github.io&#x2F;blog&#x2F;2019&#x2F;10&#x2F;20&#x2F;post&#x2F;thumbnail-blog.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;sonrisacc.github.io&#x2F;blog&#x2F;2019&#x2F;10&#x2F;20&#x2F;post&#x2F;more.jpg">
+<meta property="og:updated_time" content="2019-10-28T01:14:07.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;sonrisacc.github.io&#x2F;blog&#x2F;2019&#x2F;10&#x2F;20&#x2F;post&#x2F;thumbnail-blog.png">
+  <link rel="canonical" href="https://sonrisacc.github.io/blog/2019/10/20/post/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>How to set up a blog as github page with Hexo | Sonrisa's notes</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Sonrisa's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">sonrisa-blog-2019</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/blog/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      
+    
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://sonrisacc.github.io/blog/blog/2019/10/20/post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sonrisa Chen">
+      <meta itemprop="description" content="Test">
+      <meta itemprop="image" content="/blog/images/profilepic.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sonrisa's notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            How to set up a blog as github page with Hexo
+            
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-20 21:12:34" itemprop="dateCreated datePublished" datetime="2019-10-20T21:12:34-07:00">2019-10-20</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-27 18:14:07" itemprop="dateModified" datetime="2019-10-27T18:14:07-07:00">2019-10-27</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Assumptions I’m making about you:</p>
+<ul>
+<li><p>fairly familiar with git + gtihub</p>
+</li>
+<li><p>you want the blog to be available at<br><code>http://username.github.io/projectname</code></p>
+</li>
+<li><p>Have none/ very basic hexo knowledge</p>
+</li>
+</ul>
+<p>If the above sounds right, click read more!</p>
+<a id="more"></a>
+
+<h4 id="Install-hexo"><a href="#Install-hexo" class="headerlink" title="Install hexo"></a>Install hexo</h4><ul>
+<li>install <a href="https://hexo.io/docs/" target="_blank" rel="noopener">hexo</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>setup a main repo for <code>username.github.io</code><br><em>don’t</em> need a separate repo for the blog itself since <code>hexo deploy</code> will do that automatically</p>
+</li>
+<li><p>update _config.yml  <a href="https://gist.github.com/btfak/18938572f5df000ebe06fbd1872e4e39" target="_blank" rel="noopener">setup instruction</a></p>
+</li>
+</ul>
+<p>Very important! To setup blog as a <code>project</code> in your <code>username.github.io</code> page<br>update the last line <a href="https://gist.github.com/btfak/18938572f5df000ebe06fbd1872e4e39#5-set-information-to-use-git" target="_blank" rel="noopener">here</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">branch: gh-pages</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>add new post and deploy!</li>
+</ul>
+<hr>
+<h4 id="Couple-notes-about-relative-routes"><a href="#Couple-notes-about-relative-routes" class="headerlink" title="Couple notes about relative routes"></a>Couple notes about relative routes</h4><p>The output file tree actually includes date of when the blog is posted:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── 2019</span><br><span class="line">│   └── 10</span><br><span class="line">│       └── 20</span><br><span class="line">│           └── post</span><br><span class="line">│               ├── blog.png</span><br><span class="line">│               ├── huge-blog.png</span><br><span class="line">│               ├── index.html</span><br><span class="line">│               └── thumbnail-blog.png</span><br></pre></td></tr></table></figure>
+
+<p>Also because we are using the blog at a sub-route already, so it will be a bit different when you are trying to link a image or data from a relative path.</p>
+<h5 id="How-to-add-images"><a href="#How-to-add-images" class="headerlink" title="How to add images"></a>How to add images</h5><p>There are couple different ways to do add images:</p>
+<h4 id="utilize-assetFolder"><a href="#utilize-assetFolder" class="headerlink" title="utilize assetFolder"></a>utilize assetFolder</h4><p>You basically will need a folder that has the same name of your post:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">└── _posts</span><br><span class="line">    ├── post</span><br><span class="line">    │   └── blog-1.png</span><br><span class="line">    └── post.md</span><br></pre></td></tr></table></figure>
+
+<p>And use the following syntax in your blog post (see more about <a href="https://hexo.io/docs/asset-folders" target="_blank" rel="noopener">assetFolder</a>):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img blog-1.png [a sample image] %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You can adjust image size like this to 300px x 300px</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img blog.png 300 300 %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="use-relative-path"><a href="#use-relative-path" class="headerlink" title="use relative path"></a>use relative path</h4><p><code>![](relative image path)</code></p>
+<p><em>Although</em> if your blog is just <code>gh-pages</code>, the relative path will need to add the url root pre-fix. And also you will need the date of the blog as well <code>yyyy/mm/dd</code>. So your url will ended up something like this:<br><code>![](/blog-2019/2019/10/20/post/blog.png)</code></p>
+<h4 id="use-hexo-image-sizes"><a href="#use-hexo-image-sizes" class="headerlink" title="use hexo-image-sizes"></a>use <a href="https://github.com/ottobonn/hexo-image-sizes" target="_blank" rel="noopener">hexo-image-sizes</a></h4><blockquote class="pullquote [class]"><p>If you encountered the same error as I did where the image output path was wrong and lead to 404 when running <code>hexo-image-sizes</code>, you will need to fine tune the output path with the <a href="https://github.com/sonrisacc/hexo-image-sizes" target="_blank" rel="noopener">following changes</a> and use this forked repo as npm dependency.<br>Also because I used hacky way to make this work you would have to set: <code>post_asset_folder: true</code> in <code>_config.yml</code> and the plugin only works for posts right now.</p>
+</blockquote>
+
+<figure class="highlight plain"><figcaption><span>in _config.yml:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### Configuration for hexo-image-sizes</span><br><span class="line"></span><br><span class="line">image_sizes:</span><br><span class="line">  pattern: !!js/regexp /\.(gif|jpg|jpeg|png)$/i</span><br><span class="line">  profiles:</span><br><span class="line">    body:</span><br><span class="line">      width: 700 # height will adjust to preserve aspect ratio</span><br><span class="line">    thumbnail:</span><br><span class="line">      width: 100 # Image will be cropped to a square</span><br><span class="line">      height: 100</span><br><span class="line">    huge:</span><br><span class="line">      height: 1000</span><br><span class="line">      allowEnlargement: true</span><br><span class="line">  defaultProfile: body</span><br><span class="line">  link: true</span><br><span class="line">  linkProfile: huge</span><br><span class="line">  useAltForTitle: true</span><br><span class="line">  blogRoot: /blog-2019/   &lt;--- I added this</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><figcaption><span>in package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;hexo&quot;: &quot;^4.0.0&quot;,</span><br><span class="line">    &quot;hexo-deployer-git&quot;: &quot;^2.0.0&quot;,</span><br><span class="line">    ...</span><br><span class="line">    &quot;hexo-images-sizes&quot;: &quot;git@github.com:sonrisacc/hexo-image-sizes.git&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>In your blog:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">This</span> <span class="string">is</span> <span class="string">a</span> <span class="string">resized</span> <span class="string">image!</span></span><br><span class="line"><span class="string">..........</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#123;%</span> <span class="string">imsize</span> <span class="string">%&#125;</span></span><br><span class="line"><span class="attr">src:</span> <span class="string">blog.png</span></span><br><span class="line"><span class="attr">alt:</span> <span class="string">sample</span> <span class="string">image</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">sample</span> <span class="string">image</span></span><br><span class="line"><span class="attr">profile:</span> <span class="string">thumbnail</span></span><br><span class="line"><span class="attr">link:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">linkProfile:</span> <span class="string">huge</span></span><br><span class="line"><span class="attr">blogDate:</span> <span class="number">2019</span><span class="string">/10/20</span>  <span class="string">&lt;--</span> <span class="string">I</span> <span class="string">added</span> <span class="string">this</span></span><br><span class="line"><span class="string">&#123;%</span> <span class="string">endimsize</span> <span class="string">%&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Here’s an example of what it would look like with thumbnail size:</p>
+<a href="/blog/2019/10/20/post/huge-blog.png"><img src="/blog/2019/10/20/post/thumbnail-blog.png" alt="sample image" title="sample image"></a>
+
+<h4 id="Useful-tag-plugins"><a href="#Useful-tag-plugins" class="headerlink" title="Useful tag-plugins"></a>Useful <a href="https://hexo.io/docs/tag-plugins" target="_blank" rel="noopener">tag-plugins</a></h4><ol>
+<li><h6 id="the-more-button"><a href="#the-more-button" class="headerlink" title="the more button"></a>the more button</h6></li>
+</ol>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Text</span><br><span class="line"><span class="xml"><span class="comment">&lt;!-- more --&gt;</span></span></span><br><span class="line">Text</span><br></pre></td></tr></table></figure>
+
+<img src="/blog/2019/10/20/post/more.jpg" class="" title="[screenshot]">
+
+<ol start="2">
+<li><h6 id="the-code-block"><a href="#the-code-block" class="headerlink" title="the code block"></a>the code block</h6></li>
+</ol>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock thisIsTheFileName %&#125;</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><figcaption><span>thisIsTheFileName</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this is a codeblock</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><h5 id="the-pull-code"><a href="#the-pull-code" class="headerlink" title="the pull code"></a>the pull code</h5></li>
+</ol>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% pullquote [class] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endpullquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote class="pullquote [class]"><p>content</p>
+</blockquote>
+
+<h6 id="FYI-73-days-left-in-2019"><a href="#FYI-73-days-left-in-2019" class="headerlink" title="FYI 73 days left in 2019"></a>FYI 73 days left in 2019</h6><p>I hope this helped! Happy blogging!</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/blog/tags/hexo/" rel="tag"># hexo</a>
+            
+              <a href="/blog/tags/blog/" rel="tag"># blog</a>
+            
+          </div>
+        
+
+        
+
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-hexo"><span class="nav-number">1.</span> <span class="nav-text">Install hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Couple-notes-about-relative-routes"><span class="nav-number">2.</span> <span class="nav-text">Couple notes about relative routes</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#How-to-add-images"><span class="nav-number">2.1.</span> <span class="nav-text">How to add images</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#utilize-assetFolder"><span class="nav-number">3.</span> <span class="nav-text">utilize assetFolder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#use-relative-path"><span class="nav-number">4.</span> <span class="nav-text">use relative path</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#use-hexo-image-sizes"><span class="nav-number">5.</span> <span class="nav-text">use hexo-image-sizes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Useful-tag-plugins"><span class="nav-number">6.</span> <span class="nav-text">Useful tag-plugins</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#the-more-button"><span class="nav-number">6.0.1.</span> <span class="nav-text">the more button</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#the-code-block"><span class="nav-number">6.0.2.</span> <span class="nav-text">the code block</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#the-pull-code"><span class="nav-number">6.1.</span> <span class="nav-text">the pull code</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#FYI-73-days-left-in-2019"><span class="nav-number">6.1.1.</span> <span class="nav-text">FYI 73 days left in 2019</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/blog/images/profilepic.png"
+      alt="Sonrisa Chen">
+  <p class="site-author-name" itemprop="name">Sonrisa Chen</p>
+  <div class="site-description" itemprop="description">Test</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/blog/tags/">
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/sonrisacc" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;sonrisacc" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sonrisa Chen</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">
+      
+    Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/blog/js/utils.js?v=7.4.2"></script><script src="/blog/js/motion.js?v=7.4.2"></script>
+<script src="/blog/js/schemes/muse.js?v=7.4.2"></script>
+<script src="/blog/js/next-boot.js?v=7.4.2"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
