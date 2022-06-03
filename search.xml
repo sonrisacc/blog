@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>plugins</title>
-    <url>/blog/2022/04/24/plugins/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="Useful-tag-plugins"><a href="#Useful-tag-plugins" class="headerlink" title="Useful tag-plugins"></a>Useful tag-plugins</h3><h4 id="Adding-the-More-Button"><a href="#Adding-the-More-Button" class="headerlink" title="Adding the More Button"></a>Adding the More Button</h4><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Text</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">Text</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-
-<h4 id="Adding-Image"><a href="#Adding-Image" class="headerlink" title="Adding Image"></a>Adding Image</h4><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% asset<span class="emphasis">_img more.jpg 100% &#x27;&quot;img title&quot; &quot;alt example img&quot;&#x27; %&#125;</span></span><br></pre></td></tr></table></figure>
-
-<img src="/blog/2022/04/24/plugins/more.jpg" class="" title="100% " alt="img title">
-
-<h4 id="Creating-Draft"><a href="#Creating-Draft" class="headerlink" title="Creating Draft"></a>Creating Draft</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br><span class="line"></span><br><span class="line">hexo publish `filename`</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo Blog on GitHub Pages with Custom Domain</title>
     <url>/blog/2022/04/24/Blog/</url>
     <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>If you have a website ready at:<br><code>https://username.github.io</code></p>
@@ -223,6 +207,22 @@
 ]]></content>
       <tags>
         <tag>everyday</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>plugins</title>
+    <url>/blog/2022/04/24/plugins/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="Useful-tag-plugins"><a href="#Useful-tag-plugins" class="headerlink" title="Useful tag-plugins"></a>Useful tag-plugins</h3><h4 id="Adding-the-More-Button"><a href="#Adding-the-More-Button" class="headerlink" title="Adding the More Button"></a>Adding the More Button</h4><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Text</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">Text</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h4 id="Adding-Image"><a href="#Adding-Image" class="headerlink" title="Adding Image"></a>Adding Image</h4><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% asset<span class="emphasis">_img more.jpg 100% &#x27;&quot;img title&quot; &quot;alt example img&quot;&#x27; %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/blog/2022/04/24/plugins/more.jpg" class="" title="100% " alt="img title">
+
+<h4 id="Creating-Draft"><a href="#Creating-Draft" class="headerlink" title="Creating Draft"></a>Creating Draft</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br><span class="line"></span><br><span class="line">hexo publish `filename`</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
