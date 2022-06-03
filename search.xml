@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>plugins</title>
+    <url>/blog/2022/04/24/plugins/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="Useful-tag-plugins"><a href="#Useful-tag-plugins" class="headerlink" title="Useful tag-plugins"></a>Useful tag-plugins</h3><h4 id="Adding-the-More-Button"><a href="#Adding-the-More-Button" class="headerlink" title="Adding the More Button"></a>Adding the More Button</h4><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Text</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">Text</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h4 id="Adding-Image"><a href="#Adding-Image" class="headerlink" title="Adding Image"></a>Adding Image</h4><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% asset<span class="emphasis">_img more.jpg 100% &#x27;&quot;img title&quot; &quot;alt example img&quot;&#x27; %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/blog/2022/04/24/plugins/more.jpg" class="" title="100% " alt="img title">
+
+<h4 id="Creating-Draft"><a href="#Creating-Draft" class="headerlink" title="Creating Draft"></a>Creating Draft</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br><span class="line"></span><br><span class="line">hexo publish `filename`</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Blog on GitHub Pages with Custom Domain</title>
+    <url>/blog/2022/04/24/Blog/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>If you have a website ready at:<br><code>https://username.github.io</code></p>
+<ul>
+<li>want to host your other repositories at<br><code>https://username.github.io/project1</code><br><code>https://username.github.io/project2</code></li>
+</ul>
+<p>or with a custom domain like:<br><code>https://your-custome-name/project1</code></p>
+<ul>
+<li>host hexo blog at<br><code>https://your-custome-name/blog</code></li>
+</ul>
+<p>Keep on reading!</p>
+<p>If you don’t have a <a href="https://pages.github.com/">Github Page</a> ready yet at <code>https://username.github.io</code>, don’t worry, follow instructions <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">here</a> and then continue for the rest of the steps.</p>
+<span id="more"></span>
+
+<h3 id="Step1-Create-local-blog-folder-with-hexo-cli"><a href="#Step1-Create-local-blog-folder-with-hexo-cli" class="headerlink" title="Step1: Create local blog folder with hexo-cli"></a>Step1: Create local blog folder with hexo-cli</h3><p>follow <a href="https://hexo.io/docs/#Install-Hexo">official website’s instructions</a> to install <code>hexo-cli</code></p>
+<h4 id="Initialize-blog-at-a-given-folder"><a href="#Initialize-blog-at-a-given-folder" class="headerlink" title="Initialize blog at a given folder"></a>Initialize blog at a given folder</h4><p>Let’s say you are currently at <code>/Users/example_user/Documents</code></p>
+<ul>
+<li><p>Option1</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init [folder_name]</span><br><span class="line"><span class="built_in">cd</span> [folder_name]/</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>  Your blog folder will be available at <code>/Users/example_user/Documents/folder_name</code></p>
+</li>
+<li><p>Option2</p>
+<p>  If no folder is provided, Hexo will set up a website in the current directory.</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> blog <span class="comment"># creates a folder</span></span><br><span class="line"><span class="built_in">cd</span> blog <span class="comment"># enter the folder, now you are at /Users/example_user/Documents/blog</span></span><br><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>  Your blog folder will now be available at <code>/Users/example_user/Documents/blog</code></p>
+</li>
+</ul>
+<h4 id="Test-run-blog-locally"><a href="#Test-run-blog-locally" class="headerlink" title="Test run blog locally"></a>Test run blog locally</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line"><span class="comment"># INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Push-blog-x2F-to-github"><a href="#Push-blog-x2F-to-github" class="headerlink" title="Push blog&#x2F; to github"></a>Push blog&#x2F; to github</h4><p>Follow <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo#create-a-repository">instructions</a> in github to create a new repository in github with name {your-blog-name}</p>
+<p>Very important note:</p>
+<ul>
+<li><p>github pages renders “child” project via repository name.<br>aka, if you want your blogs be available at <code>https://username.github.io/your-blog-name</code>, your github repository that hosts your blog has to be names as <code>your-blog</code>.</p>
+</li>
+<li><p>if you are using a personal free github account, you can only choose <code>public</code> for a repository to be Github Pages</p>
+</li>
+<li><p>at this point, don’t add any README.md or set HEAD things that you normally do for a github repo. Hexo will take care of those in the next step.</p>
+</li>
+</ul>
+<h3 id="Step3-Deployment-Setup"><a href="#Step3-Deployment-Setup" class="headerlink" title="Step3 Deployment Setup"></a>Step3 Deployment Setup</h3><p>Install <a href="https://github.com/hexojs/hexo-deployer-git">hexojs&#x2F;hexo-deployer-git</a> for deployment.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>Then update config file <code>/Users/example_user/Documents/blog/_config.yml</code> with your repo info</p>
+<p>You can find it here:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">~~~~~~~~~~~~~~~~~~</span> <span class="string">_config.yml</span> <span class="string">~~~~~~~~~~~~~~~~~~</span></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:example_user/blog.git</span>  <span class="comment"># add your newly created repo address here</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">gh-pages</span></span><br></pre></td></tr></table></figure>
+
+<p>Drum roll, you are almost there!<br>Let’s now do</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment"># INFO  Deploy done: git</span></span><br></pre></td></tr></table></figure>
+
+<p>Your blog now should be available at <code>https://example-user.github.io/blog</code></p>
+<h3 id="Step2-Use-Custom-Domain"><a href="#Step2-Use-Custom-Domain" class="headerlink" title="Step2 Use Custom Domain"></a>Step2 Use Custom Domain</h3><ul>
+<li><p>Register a domain name at any DNS service that you have chosen. I used <code>www.cloudns.net</code> as my DNS service.</p>
+</li>
+<li><p>Navigate to your github main example_user.github.io repo -&gt; Settings -&gt; Pages -&gt; Custom domain<br>Fill in your registered domain. See detail instruction <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">here</a> bullet point4.</p>
+</li>
+<li><p>The following is just a detailed explanation for the above link’s bullet point5:</p>
+</li>
+<li><p>Configure <strong>Both</strong> subdomain and APEX domain, see difference <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages#supported-custom-domains">here</a> if interested.</p>
+</li>
+<li><p>Inside your DNS service, find <code>DNS Hosting</code> or <code>DNS Zone</code> that allows you to add <code>new record</code></p>
+<p>Create the following records per Github instruction:</p>
+<ul>
+<li><code>CNAME record</code> instruction <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">here</a></li>
+<li><code>A record</code> instruction <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">here</a></li>
+</ul>
+</li>
+<li><p>Continue following the Github instructions bullet point 6-9</p>
+</li>
+<li><p>If everything goes well, you should be able to load <code>https://your-custome-name</code> page in browser now</p>
+</li>
+</ul>
+<h3 id="Step3-Update-Custom-Domain-in-Blog-x2F"><a href="#Step3-Update-Custom-Domain-in-Blog-x2F" class="headerlink" title="Step3 Update Custom Domain in Blog&#x2F;"></a>Step3 Update Custom Domain in Blog&#x2F;</h3><ul>
+<li><p>Now go to <code>/Users/example_user/Documents/blog/source</code><br>Create a CNAME file and fill in <code>your-custome-name</code></p>
+</li>
+<li><p>Deploy again</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment"># INFO  Deploy done: git</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>You should be able to load <code>https://your-custome-name/blog</code> page in browser now</p>
+</li>
+</ul>
+<p>Happy blogging!</p>
+<hr>
+<h4 id="System-version"><a href="#System-version" class="headerlink" title="System version"></a>System version</h4><p>System version:<br>mac BigSur</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo-cli: 4.3.0</span><br><span class="line">os: darwin 20.1.0 11.0.1</span><br><span class="line"></span><br><span class="line">node: 18.0.0</span><br><span class="line">v8: 10.1.124.8-node.13</span><br></pre></td></tr></table></figure>
+
+<hr>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>How-to</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2022 春日假正经纽约游记 (二)</title>
+    <url>/blog/2022/05/15/NYC2/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="肉"><a href="#肉" class="headerlink" title="肉"></a>肉</h3><p>心心念念很多年的猪排饭，鳗鱼饭 + 烤串是想回纽约的主要原因之一！<br>都是几年前实习的时候被朋友带去的，初次惊艳之后久久不能忘怀。</p>
+<h5 id="Katsu-Hama-11-E-47th-St-New-York-NY-10017"><a href="#Katsu-Hama-11-E-47th-St-New-York-NY-10017" class="headerlink" title="Katsu-Hama, 11 E 47th St, New York, NY 10017"></a>Katsu-Hama, 11 E 47th St, New York, NY 10017</h5><img src="/blog/2022/05/15/NYC2/day1.jpg" class="">
+<p>猪排饭，猪排本人外酥里嫩鲜美多汁就不需要多余的描述了。<br>特别有趣的是店家会提供一小份芝麻，让客人在等待猪排的时候自己研磨，将期待值拉满。<br>金黄色的猪排会堆叠在切成细丝状的冰凉卷心菜旁。一口肉，一口菜，炸排的口感为脆，配菜为酥，解腻又层次丰富。<br>*如果天花板脆弱，不妨试试 Katsu Don, 半熟的蛋白裹着猪排，更添一份美味。<br>两个人两份饭 + appetizer 花费 78$</p>
+<h5 id="Yakitori-Sun-Chan-2707-Broadway-New-York-NY-10025"><a href="#Yakitori-Sun-Chan-2707-Broadway-New-York-NY-10025" class="headerlink" title="Yakitori Sun-Chan, 2707 Broadway, New York, NY 10025"></a>Yakitori Sun-Chan, 2707 Broadway, New York, NY 10025</h5><img src="/blog/2022/05/15/NYC2/day4-1.jpg" class="">
+<p>这里拥有对独行客不友好的双人份鳗鱼饭。<br>紫菜和基本无刺肥瘦刚好的现烤鳗鱼满满铺在砂锅饭上。<br>心太急没来得及好好拍照。图中的茶壶是这家的特别之处，装着 Dashi 茶汤。 鳗鱼饭快吃完的时候可以上一点，鳗鱼饭变成泡饭，别有一番滋味。<br>两人份鳗鱼饭 + appetizer 花费 76$</p>
+<h5 id="Soba-Noodle-Azuma-251-W-55th-St-New-York-NY-10019"><a href="#Soba-Noodle-Azuma-251-W-55th-St-New-York-NY-10019" class="headerlink" title="Soba Noodle Azuma, 251 W 55th St, New York, NY 10019"></a>Soba Noodle Azuma, 251 W 55th St, New York, NY 10019</h5><img src="/blog/2022/05/15/NYC2/day6-1.jpg" class="">
+<p>炎热的节气来一口凉爽的荞麦面一直是旅伴梦想中的桥段，此行就安排了中城区中实惠好吃的这家店。面的分量有小中大三种，可选凉面浇头或者热炒浇头。 如果选的是套餐还配送饭和甜点, 面点中份就差不多了。</p>
+<p>两人份面 + appetizer 花费 75$</p>
+<h5 id="Yakitori-Totto，-251-W-55th-St-2nd-Floor-New-York-NY-10019"><a href="#Yakitori-Totto，-251-W-55th-St-2nd-Floor-New-York-NY-10019" class="headerlink" title="Yakitori Totto， 251 W 55th St 2nd Floor, New York, NY 10019"></a>Yakitori Totto， 251 W 55th St 2nd Floor, New York, NY 10019</h5><p>当年非常喜欢的烤串店, 可以坐在吧台前看着烤串师傅扇风烤肉, 氛围和料理都温暖馥郁。<br>可是我竟然没记住店名, 又被它们家在google map上的照片误导， 这次搜的时候就把在它地理位置附近的 Torishin 搞混了… 直到去吃荞麦面路过了它才想起来其实本来想去的是这家。</p>
+<p>实惠好吃！</p>
+<h5 id="Yakitori-Torishin-362-W-53rd-St-New-York-NY-10019"><a href="#Yakitori-Torishin-362-W-53rd-St-New-York-NY-10019" class="headerlink" title="Yakitori Torishin, 362 W 53rd St, New York, NY 10019"></a>Yakitori Torishin, 362 W 53rd St, New York, NY 10019</h5><div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img src="/blog/2022/05/15/NYC2/day2-1.jpg" class=""></div><div class="group-picture-column"><img src="/blog/2022/05/15/NYC2/day2-2.jpg" class=""></div></div></div>
+
+<p>阴差阳错来了这一家， 比 Totto 再贵上一些。奢侈了一把订的是 $280 一人的 selected counter 由副店长亲自挑选食材并烤制。New York Times 曾经<a href="https://www.nytimes.com/2017/04/11/dining/torishin-review-japanese-yakitori.html">报道</a>过且自创店以来一直名列 MICHELIN Guide + 2018年之前7年都米其林一星。<br>私以为主料为鸡的烤串都堪称完美以及非常喜欢来自西班牙的烤猪肩肉！日式烤串都不重酱料，吃的是肉香, 碳香。鸡肉软滑似豆腐却又极富弹性，配菜白萝卜泥也爽口沁人心脾，在串与串之间刷新舌尖的感知力。</p>
+<p>感觉 selected counter 是为了和厨师惬意聊天而存在的。 如果只是普通堂食感觉会更实惠一些。 selected counter 是一个6人一排的小独间，由厨师推荐套餐， 基本就是鸡的每个部位 + 前菜 + 当季推荐 + 小份主食 + 甜点。 空间非常小， 不过烤串在凸起的吧台柜后，只能看见扇风的特质蒲扇一隅，看不见串串是如何被烤制而成的，乃一大憾事。 当日我遇上的是副店长掌扇，是个笑起来眼睛成一条线的可爱福岛人，我对不明食材的反复询问和蹩脚日语短句他都不介意，和另外一个日语一流的美国副厨两人一唱一和的轮流陪聊，备菜。可能烤串的这份人情味和烟火气息更是享受美食不可或缺的一部分吧。</p>
+<p>已经无法想象更好吃的烤串是什么样的了，也因此非常好奇最近风声正盛的 <a href="https://www.nytimes.com/2021/07/13/dining/torien-review.html">Torien</a>， 听说是日本烤串厨神 Chef Yoshiteru Ikegawa 在纽约的分店 ( 总店 Torishiki 在东京 ) 有机会的话一定也要去试试。</p>
+<p>$265 per person selected counter 需预订</p>
+<h5 id="Tsukimi-228-E-10th-St-New-York-NY-10003"><a href="#Tsukimi-228-E-10th-St-New-York-NY-10003" class="headerlink" title="Tsukimi, 228 E 10th St, New York, NY 10003"></a>Tsukimi, 228 E 10th St, New York, NY 10003</h5><div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img src="/blog/2022/05/15/NYC2/day5-4.jpg" class=""></div><div class="group-picture-column"><img src="/blog/2022/05/15/NYC2/day5-3.jpeg" class=""></div></div></div>
+
+<p><font size=2> 图1: 餐后店家提供的菜单 <font/><br><font size=2> 图2: 源自 <a href="https://www.dezeen.com/2019/07/12/tsukimi-restaurant-studio-tack-new-york">dezeen</a> <font/></p>
+<p><font size=4><font/></p>
+<p><a href="https://www.tsukimi.nyc/about">Tsukimi</a>，月见。 直译为赏月，是个以视觉享受为主的米其林一星现代怀石料理。主厨 Takanori Akiyama 极善于用法式料理的功法呈现日本美食 (Modern Japanese with a French twist)。除了月见以外，他执掌的另外一家价格相较实惠的餐厅 <a href="https://sakamai.com/">SakeMai</a> 也是非常不错的选择。</p>
+<p>餐厅室内由纽约 Studio Tack 设计事务<a href="https://www.dezeen.com/2019/07/12/tsukimi-restaurant-studio-tack-new-york/">设计</a>， 别具一格。店址在半地下，店铺门面处一如传统的日料店挂着染有一轮明月的门帘 ( Noren )。<br>进门之后，与正常餐厅不同，没有独立的桌椅，空间正中是约4人宽的中轴线， 直通厨房，只有员工可以走动。 中轴线两侧纵向列着两条“吧台”，精致的各色餐具陈列在吧台桌靠近中轴线侧，客人则面对面分坐在吧台桌靠墙的外侧。 客人背后不远就是墙面了，暖色的细木条沿墙直上，横跨天花板，与对面墙上的木条形成闭环，多个平行细木条闭环垂直于中轴线，等分切割着这个纵向的空间，每个区间即一个客人位置的宽度。客人位置的背后是落地镜面，起身后一人高左右的地方是如圆月般的铜镜。棕与金为主色调的“秋”意就在这样一个只能容纳12人的地方成形。</p>
+<p>通常一同来的客人是并排而坐，遥远的桌对面是另外一批客人，所以对于社恐而言这个设计其实是很可怕的，通常等菜的时候一抬头就和对面的客人互相对视了, 一场饭局下来可以混个脸熟。再者如果有一方素质不是很好的客人大声聊天，基本整个用餐过程是很受影响的。 只叹美丽的空间总有不实用的时候。</p>
+<div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img src="/blog/2022/05/15/NYC2/day5-1.jpg" class=""></div><div class="group-picture-column"><img src="/blog/2022/05/15/NYC2/day5-5.jpg" class=""></div></div></div>
+
+<p>从前菜到甜点共计12道，代表着月亮的阴晴圆缺。每一道菜肴与其适配的餐具组合起来都美的似是一幅画。连筷子托架都戏份十足连着换了好几个。<br>其中我最喜爱的是满月时的龙虾蒸蛋，鲜香滑嫩， 甜点黄豆粉味冰激凌新奇有趣。但菜肴随季节更换，所以不太能够做参考的。</p>
+<p>$265 per person 需预订</p>
+<h3 id="酒"><a href="#酒" class="headerlink" title="酒"></a>酒</h3><h5 id="Dante-West-Village，-551-Hudson-St-New-York-NY-10014"><a href="#Dante-West-Village，-551-Hudson-St-New-York-NY-10014" class="headerlink" title="Dante West Village， 551 Hudson St, New York, NY 10014"></a>Dante West Village， 551 Hudson St, New York, NY 10014</h5><img src="/blog/2022/05/15/NYC2/day3.jpg" class="">
+
+<p>Dante 在纽约有两家，老店主打 Negori, 新店主打海鲜 brunch 和 Martini。Dante 在19年的时候被 <a href="https://www.worlds50bestbars.com/the-list/dante.html">The World’s 50 Best Bars</a> 评选为世界第一好的酒吧 (不过21年就掉到第30位了，且这个榜单不能全信只能做参考)。<br>West Village 的这一间是新店，环境很好。去的当日是刚下过雨的 west village，红砖绿叶，四处装点了白色繁盛的花，惬意怡人。</p>
+<p>我们去的时候是周中，人不多，但是很多好吃的都只有周末 brunch 才有。如果去的话千万记得要预订。因为专程奔着它家的酒去的，就选了经典 Martini 和 With a twist。<br>这家店非常有趣的地方是，酒是事先混好的装在特质的类似红酒瓶的透明瓶子里，上菜时，一个冻过的杯子，一碗Garnish，让客人自己将酒组合起来享用。<br>没有点什么主菜没法做推荐了。 倒是它们家的面包非常独特，很难形容的口感，配上特制的黄油，下酒做下午茶非常不错。</p>
+<p>两人份酒 + 一份 salad 一份 beef tartare + appetizer 花费 110$</p>
+<h5 id="Katana-Kitten，-531-Hudson-St-New-York-NY-10014"><a href="#Katana-Kitten，-531-Hudson-St-New-York-NY-10014" class="headerlink" title="Katana Kitten， 531 Hudson St, New York, NY 10014"></a>Katana Kitten， 531 Hudson St, New York, NY 10014</h5><img src="/blog/2022/05/15/NYC2/day3-1.jpg" class="">
+<p>直译为武士刀与猫的，不上照的美艳酒吧!! (哭，我拍的不好) 想看店家自己拍的美照请移步<a href="https://www.instagram.com/katanakitten_nyc/?hl=en">这里</a>。 但是真的真的好看好喝又好吃，酒保又温柔！可以说是全纽约之旅的 Highlight 之一。可能是因为主打日本酒为基酒，我都不是特别熟悉，连点了4杯，次次惊喜，下酒菜也都特别新鲜好吃。结账后酒保小哥还问我们要不要来杯免费的 tequila shot，已然有些微醉拒绝了，小哥说那来点不上头的，大家吨吨吨一杯好喝的 sparkling sake 下肚才不舍的离开。</p>
+<p>店是明星调酒师 <a href="https://imbibemagazine.com/qa-with-masahiro-urushido/">Masahiro Urushido</a> 开的。类似月见的主厨，也主打东西方文化混合牌。他的酒吧一大特色就是单品精而少，酒保可以分出精力照顾客人。他的书 THE JAPANESE ART OF THE COCKTAIL 在 <a href="https://usa1lib.vip/book/16280652/f2576e">z-lib</a> 有的下载，喜欢的酒可以自己在家做了！<br>非常喜欢其中的 Amaretto sour。 Amaretto 本是意大利以杏核或杏仁为主要原料的利口酒，甜中带苦，在这里却用自酿的乌梅酒去平替了一部分，配上打发的细腻泡沫和腌渍乌梅粉，入口后先甜后酸。裸麥威士忌特有的隐约辛辣感叠加在这温润里，丰富了层次，余韵悠长。</p>
+<p>主打墨西哥风味鸡尾酒的调酒师 <a href="https://www.starchefs.com/cook/chefs/bio/nacho-jimenez">Nacho Jimenez</a>与 Urushido 先生亦师亦友，他的酒吧 <a href="http://www.ghostdonkey.com/">Ghost Donkey</a> 喜欢 tequila 的朋友千万别错过，可惜纽约的门店关了，在 Las Vegas 和中部有分店。</p>
+<p>4杯酒 + 两份 appetizer 花费 $95</p>
+<h5 id="Smalls-Jazz-Club，-183-W-10th-St-New-York-NY-10014"><a href="#Smalls-Jazz-Club，-183-W-10th-St-New-York-NY-10014" class="headerlink" title="Smalls Jazz Club， 183 W 10th St, New York, NY 10014"></a>Smalls Jazz Club， 183 W 10th St, New York, NY 10014</h5><img src="/blog/2022/05/15/NYC2/day3-2.jpeg" class="">
+<p>从 Katana Kitten 出来误打误撞碰上了近一个block长的队伍。喝的半醉心情特别好的我就赖着不走了，等着看看前方有什么好东西。才发现入口是夹在两栋房子缝隙之间的一间爵士俱乐部。回家之后网上查了一下才发现是个蛮有名的地方，90年代时这里是纽约新兴爵士乐队起家的据点之一。它们的官网有<a href="https://www.smallslive.com/">现场 live</a>及过往场次的录像。<br>更多爵士乐相关的酒吧 list 可移步<a href="https://www.grandlife.com/culture/guide/nyc-jazz-clubs-know-according-musician-ken-fowser/">这里</a>。</p>
+<ul>
+<li>COVID 期间进入不查疫苗证且不强制戴口 + 入场必须买一杯饮料 (10$左右)<br>门票 $30 per person， 可预订</li>
+</ul>
+<h5 id="Death-amp-Co-433-E-6th-St-New-York-NY-10009"><a href="#Death-amp-Co-433-E-6th-St-New-York-NY-10009" class="headerlink" title="Death &amp; Co  433 E 6th St, New York, NY 10009"></a>Death &amp; Co  433 E 6th St, New York, NY 10009</h5><img src="/blog/2022/05/15/NYC2/day5.jpg" class="">
+<p>这是一个另人难过的地方，我都提不起兴致写了。留给大家避雷。<br>其实对鸡尾酒稍稍有些涉猎的应该都知道 Death &amp; Co 出版的 cocktail codex 的大名，去之前我是万分期待以为去朝圣的。店里的酒单大约有10页 (Katta Kitten 一页写完的酒单与之相比真显落寞)。 入店前等了整整45分钟，店内人声鼎沸大概有四五十人，服务员只有两人，酒保两人。忙的根本没有时间介绍酒品。<br>点了两杯当季新品，一杯浓郁如冰镇红糖姜汤，一杯平淡如水却叫做 first impression。 怎奈何没有及时止损，以为只是打开方式不对，续点了两杯经典款式，一款像涂满了桂皮粉的苹果汁，一款就是不出彩泡沫不细腻的 gin sour。忿忿而离席。</p>
+<p>4杯酒  98$</p>
+<hr>
+<p>细心的朋友不难发现这次的吃食介绍大部分都是日料。因为每次去纽约都得想好一个主题才感觉来得及选择吃的。不然实在是太为难选择综合症患者如我了。</p>
+<p>上述餐厅地理位置详请 + 一些想去未去成的酒吧和吃食整理于此地图。 蓝色星星标志是超好吃，别的是路过可以试一下，灰色是我欣赏不来的店 ：]</p>
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1sF_0aCrowKDTdBIuP3-cKlboKrXtTw4&ehbc=2E312F" width="640" height="480"></iframe>
+
+
+]]></content>
+      <categories>
+        <category>travel</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>APRIL</title>
+    <url>/blog/2022/04/23/post/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><p>从2018年就开始捣腾hexo blog。今天终于又重拾起来了。希望自己今年能真的认认真真的写下去 ：]</p>
+<p>今日份心情：<br>非常喜欢的画家Sidokid之前在微博和ins都有账号的来着， 最近发现奈何TA仿若人间蒸发了似的所有账号都注销了。</p>
+<p>一直治愈温暖着我的图分享给大家。并祝安好。</p>
+<img src="/blog/2022/04/23/post/img.jpeg" class="" title="This is an example image">
+]]></content>
+      <tags>
+        <tag>everyday</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2022 春日假正经纽约游记 (一)</title>
+    <url>/blog/2022/05/13/NYC/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><p><font size=3><font/><br>对纽约总有种说不清道不明的归属感。明明总计只待了不到一年。可能是因为 “study abroad” 那一学期数节“用脚丈量曼哈顿”课程让我对这片土地的历史、规划、建筑物们有了相较于其它城市更多的了解，也可能是因为布鲁克林大桥上的日落和雪见证过年少时沉默的情爱，又或者只是因为Bryant Park的长椅和鸽子偷食过第一份实习时的午餐。纽约，总让我想起歌词, 踏遍万水千山总有一地故乡。 可能精神上的故乡其中之一确是纽约吧。</p>
+<h2 id="住与行"><a href="#住与行" class="headerlink" title="住与行"></a>住与行</h2><p>纽约住址的选择，其实是旅程“本命”地铁线路的选择。</p>
+<p>如下图所示， 中央公园将中城和上城区一分为二, 因此红线绿线分制两边的形式几乎贯穿整岛。</p>
+<p><font size=1> 全图请移步<a href="http://a.tiles.mapbox.com/v3/bobbysud.subway.html#13/40.7414/-73.9731">这里</a><font/></p>
+<img src="/blog/2022/05/13/NYC/nyc_subway.png" class="">
+
+<p><font size=3><font/><br>42街则做为核心中转站链接所有线路，从西面第七大道的 Times square 站点由地下横贯5个街区，连通至东面第五和第三大道中间的Grand Central。<br><font size=1> 图1：Below grade grand central subway station plan <a href="%5Bnyc.gov%5D(https://www1.nyc.gov/assets/planning/download/pdf/plans/east-midtown/east_midtown.pdf)">^1</a> <font/></p>
+<img src="/blog/2022/05/13/NYC/grand_central.png" class="">
+
+<p><font size=3><font/><br>高中毕业时人生第一次与朋友远游，遇见的是夏日纽约。住在 <a href="https://www.hiusa.org/find-hostels/new-york/new-york-891-amsterdam-ave">HI New York City Hostel $</a> ( upper manhattan 哥伦比亚大学校区附近 ), 下了出租车，对纽约的第一印象便是整面的红墙，崩坏的路边消防水栓和围着四散水花打闹的孩童。上下铺，房间小的只剩下床，公共洗手间，类似宿舍生活。红线的103街便成为了第一个熟悉的站点。实习时候也住在这附近，可能因为是在大学附近的关系，夏天在这短租的选择比较实惠且多，周边生活方面的购物也非常便捷，Broadway 大街向南向北沿路都是好吃不贵的餐厅。不远处即是 Riverside Park， 傍晚间多是锻炼健身的人。是学生时代不多金时的好住处。</p>
+<p>转眼已是十年，这次去选的是 <a href="https://www.thepodhotel.com/pod-39/">Pod 39 $$</a>, 在 Grand Central 附近， 房间依然小的只剩床，( 虽说是 queen size 的床 ᕕ( ᐛ )ᕗ )网速奇慢，等同于无。紫线42街站成为了此行的主站点。紫线是中城区最深的地铁站(约80英尺) 位于地下三层，对这条线路不熟悉的话跟着路标找也还是会迷茫，在此附上轴视图以帮助理解。 秘诀是不需要太关注指示牌，在红线站台楼层继续找寻通往更下层的楼梯就会找到紫线啦。</p>
+<table>
+<thead>
+<tr>
+<th align="center"><font size=1> 图1：TIMES SQUARE 42ND STREET STATION [^2] <font/></th>
+<th align="center"><font size=1> 图2：42ND STREET GRAND CENTRAL STATION [^3] <font/></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://images.squarespace-cdn.com/content/v1/55ababf2e4b064e8b6004ad2/1489619472654-OOKBIWBA719JUTQIRUHU/02+Times+Square+Image.jpg"></td>
+<td align="center"><img src="https://images.squarespace-cdn.com/content/v1/55ababf2e4b064e8b6004ad2/1448456297288-3XYHEXHTFQOSV12Q1GQL/08+Grand+Central+Image.jpg"></td>
+</tr>
+</tbody></table>
+<p><font size=3>纽约最深的<a href="https://www.6sqft.com/inside-the-graffiti-covered-191st-street-tunnel-nycs-deepest-subway-and-only-underground-street/">地铁站</a>在191街站, 有足足173 英尺深！190街蓝线站也不遑多让，电梯大概乘个几分钟才到地底 <del>(可能只是电梯慢)</del> <font/>。</p>
+<p>如果旅游计划里包括多个不在曼哈顿本岛上的景点，选择这个站点附近住宿可较为方便的搭乘通往纽约各处的地铁、火车、渡轮。同时又不会太难去到本岛上的各处。</p>
+<p>如果基本选择在本岛上晃悠<del>且多金</del>，我个人是比较喜欢中下城区以西的地方。好吃好玩好看的东西多，出门全靠走，不需要以昏黄浑浊的回城地铁作为每日的结语。</p>
+<p>其中值得一提的有 <a href="https://www.dezeen.com/2012/04/29/dream-downtown-hotel-by-handel-architects/">The Dream Downtown $$$</a>,  即使不住，走过路过欣赏一下大堂也还是很不错的选择。酒店是 Handel Architects 十年前的作品。 ( <a href="https://handelarchitects.com/project/national-september-11-memorial?pagi=new-york">911 纪念博物馆</a>也是它的作品之一 )。全酒店以海船圆形舱窗为“题”，室内外设计都切题走心。大堂的等待区上方是泳池，阳光透过水，穿过布满孔洞的金属天花板打在地上墙上，有种林间树影的婆娑感。可惜酒店建成已10年，风化了的钢金属外墙给酒店裹上了些微败落的痕迹， 在室内这种感觉也若有似无的弥散着。时间总爱在建筑物上添加些令人五味杂陈的风味。</p>
+<p>纽约还有很多设计很有意思的酒店，可以选择去它们的 Bar 喝一杯体验一下或者只是进大堂坐坐 (比如highline上 standard hotel 的 bar <a href="http://www.romanandwilliams.com/boom-boom-room">Boom Boom Boom</a>, 大三时的乡下我进城，因为这个 bar 重新理解了”金碧辉煌”四字的含义，凡尔赛宫都没能让我体会到这感觉), 酒店由 Roman and Williams 设计，它们官网的手绘图和照片都很美，但私以为仍不及实地的”金灿灿”感震撼。</p>
+<p>综上所述，如果纽约行不是以风味酒店探索为主旨的话，比较推荐先规划在纽约想要玩的景点，而后根据景点占比最高的地铁线路&#x2F;区域挑选住址。</p>
+<h3 id="7日游路线"><a href="#7日游路线" class="headerlink" title="7日游路线"></a>7日游路线</h3><p>Day1: ( 半日 ) 第五大道 &amp; Rockefeller Center<br>Day2: Chelsea Highline + Hudson Yard<br>Day3: Guggenheim Museum + 横贯 Central Park + the Oculus + Greenwich Village<br>Day4: Grand Central Terminal + Botanic Garden + the Met Cloisters + 哥大<br>Day5: the MoMA + West Village<br>Day6: Grace Farm ( 出了纽约去了CT ) + the Morgan Library &amp; Museum + Flatiron Building<br>Day7: Hunters point + Noguchi Museum + Modulightor Inc + Harry Potter (the cursed child) show</p>
+<p>详请整理于此图：</p>
+<iframe src="https://www.google.com/maps/d/embed?mid=1BRj_GDbUJLEwDiQ_ov4ku5Tu19fy7ID2&ehbc=2E312F" width="640" height="480"></iframe>
+
+<p>这次的路线高度走马观花, 每日步数都是 2w+, 没法再去别处喜欢的地方了。像是 Roosevelt Island 回看曼哈顿的缆车夜景，Battery Park 小码头的船上的生蚝 <a href="https://crewny.com/grand-banks">Oyster Bar</a>, SoHo Donald Judd 的 <a href="https://www.wallpaper.com/art/donald-judd-101-spring-street-new-york-studio">家&#x2F;Studio</a>, 收藏 the Klimt-Gruppe <a href="https://www.neuegalerie.org/collection/Austrian">维也纳分离派画作</a> 的 the Neue Galerie, 远些的 <a href="https://www.visitmanitoga.org/tours">MANITOGA</a> ( The Russel Wright Design Center )。  还有一直好奇但都没能去成的 <a href="https://ricelipka.com/work_detail.php?id=3">Dia:Beacon</a> 和 <a href="https://collections.stormking.org/Featured/index">Storm King Art Center</a>…</p>
+<p>无论去了纽约多少次， 它那些深藏的小秘密和不停歇的新新开发, 总拌和着警笛和工地的轰鸣，喃喃对我说着: 敬请下次光临呀！</p>
+]]></content>
+      <categories>
+        <category>travel</category>
+      </categories>
+  </entry>
+</search>
