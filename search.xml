@@ -1,6 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>plugins</title>
+    <url>/blog/2022/04/24/plugins/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="Useful-tag-plugins"><a href="#Useful-tag-plugins" class="headerlink" title="Useful tag-plugins"></a>Useful tag-plugins</h3><h4 id="Adding-the-More-Button"><a href="#Adding-the-More-Button" class="headerlink" title="Adding the More Button"></a>Adding the More Button</h4><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Text</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">Text</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h4 id="Adding-Image"><a href="#Adding-Image" class="headerlink" title="Adding Image"></a>Adding Image</h4><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% asset<span class="emphasis">_img more.jpg 100% &#x27;&quot;img title&quot; &quot;alt example img&quot;&#x27; %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<img src="/blog/2022/04/24/plugins/more.jpg" class="" title="100% " alt="img title">
+
+<h4 id="Creating-Draft"><a href="#Creating-Draft" class="headerlink" title="Creating Draft"></a>Creating Draft</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br><span class="line"></span><br><span class="line">hexo publish `filename`</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Blog on GitHub Pages with Custom Domain</title>
+    <url>/blog/2022/04/24/Blog/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>If you have a website ready at:<br><code>https://username.github.io</code></p>
+<ul>
+<li>want to host your other repositories at<br><code>https://username.github.io/project1</code><br><code>https://username.github.io/project2</code></li>
+</ul>
+<p>or with a custom domain like:<br><code>https://your-custome-name/project1</code></p>
+<ul>
+<li>host hexo blog at<br><code>https://your-custome-name/blog</code></li>
+</ul>
+<p>Keep on reading!</p>
+<p>If you don’t have a <a href="https://pages.github.com/">Github Page</a> ready yet at <code>https://username.github.io</code>, don’t worry, follow instructions <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">here</a> and then continue for the rest of the steps.</p>
+<span id="more"></span>
+
+<h3 id="Step1-Create-local-blog-folder-with-hexo-cli"><a href="#Step1-Create-local-blog-folder-with-hexo-cli" class="headerlink" title="Step1: Create local blog folder with hexo-cli"></a>Step1: Create local blog folder with hexo-cli</h3><p>follow <a href="https://hexo.io/docs/#Install-Hexo">official website’s instructions</a> to install <code>hexo-cli</code></p>
+<h4 id="Initialize-blog-at-a-given-folder"><a href="#Initialize-blog-at-a-given-folder" class="headerlink" title="Initialize blog at a given folder"></a>Initialize blog at a given folder</h4><p>Let’s say you are currently at <code>/Users/example_user/Documents</code></p>
+<ul>
+<li><p>Option1</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init [folder_name]</span><br><span class="line"><span class="built_in">cd</span> [folder_name]/</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>  Your blog folder will be available at <code>/Users/example_user/Documents/folder_name</code></p>
+</li>
+<li><p>Option2</p>
+<p>  If no folder is provided, Hexo will set up a website in the current directory.</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> blog <span class="comment"># creates a folder</span></span><br><span class="line"><span class="built_in">cd</span> blog <span class="comment"># enter the folder, now you are at /Users/example_user/Documents/blog</span></span><br><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>  Your blog folder will now be available at <code>/Users/example_user/Documents/blog</code></p>
+</li>
+</ul>
+<h4 id="Test-run-blog-locally"><a href="#Test-run-blog-locally" class="headerlink" title="Test run blog locally"></a>Test run blog locally</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line"><span class="comment"># INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Push-blog-x2F-to-github"><a href="#Push-blog-x2F-to-github" class="headerlink" title="Push blog&#x2F; to github"></a>Push blog&#x2F; to github</h4><p>Follow <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo#create-a-repository">instructions</a> in github to create a new repository in github with name {your-blog-name}</p>
+<p>Very important note:</p>
+<ul>
+<li><p>github pages renders “child” project via repository name.<br>aka, if you want your blogs be available at <code>https://username.github.io/your-blog-name</code>, your github repository that hosts your blog has to be names as <code>your-blog</code>.</p>
+</li>
+<li><p>if you are using a personal free github account, you can only choose <code>public</code> for a repository to be Github Pages</p>
+</li>
+<li><p>at this point, don’t add any README.md or set HEAD things that you normally do for a github repo. Hexo will take care of those in the next step.</p>
+</li>
+</ul>
+<h3 id="Step3-Deployment-Setup"><a href="#Step3-Deployment-Setup" class="headerlink" title="Step3 Deployment Setup"></a>Step3 Deployment Setup</h3><p>Install <a href="https://github.com/hexojs/hexo-deployer-git">hexojs&#x2F;hexo-deployer-git</a> for deployment.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>Then update config file <code>/Users/example_user/Documents/blog/_config.yml</code> with your repo info</p>
+<p>You can find it here:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">~~~~~~~~~~~~~~~~~~</span> <span class="string">_config.yml</span> <span class="string">~~~~~~~~~~~~~~~~~~</span></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:example_user/blog.git</span>  <span class="comment"># add your newly created repo address here</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">gh-pages</span></span><br></pre></td></tr></table></figure>
+
+<p>Drum roll, you are almost there!<br>Let’s now do</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment"># INFO  Deploy done: git</span></span><br></pre></td></tr></table></figure>
+
+<p>Your blog now should be available at <code>https://example-user.github.io/blog</code></p>
+<h3 id="Step2-Use-Custom-Domain"><a href="#Step2-Use-Custom-Domain" class="headerlink" title="Step2 Use Custom Domain"></a>Step2 Use Custom Domain</h3><ul>
+<li><p>Register a domain name at any DNS service that you have chosen. I used <code>www.cloudns.net</code> as my DNS service.</p>
+</li>
+<li><p>Navigate to your github main example_user.github.io repo -&gt; Settings -&gt; Pages -&gt; Custom domain<br>Fill in your registered domain. See detail instruction <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">here</a> bullet point4.</p>
+</li>
+<li><p>The following is just a detailed explanation for the above link’s bullet point5:</p>
+</li>
+<li><p>Configure <strong>Both</strong> subdomain and APEX domain, see difference <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages#supported-custom-domains">here</a> if interested.</p>
+</li>
+<li><p>Inside your DNS service, find <code>DNS Hosting</code> or <code>DNS Zone</code> that allows you to add <code>new record</code></p>
+<p>Create the following records per Github instruction:</p>
+<ul>
+<li><code>CNAME record</code> instruction <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">here</a></li>
+<li><code>A record</code> instruction <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">here</a></li>
+</ul>
+</li>
+<li><p>Continue following the Github instructions bullet point 6-9</p>
+</li>
+<li><p>If everything goes well, you should be able to load <code>https://your-custome-name</code> page in browser now</p>
+</li>
+</ul>
+<h3 id="Step3-Update-Custom-Domain-in-Blog-x2F"><a href="#Step3-Update-Custom-Domain-in-Blog-x2F" class="headerlink" title="Step3 Update Custom Domain in Blog&#x2F;"></a>Step3 Update Custom Domain in Blog&#x2F;</h3><ul>
+<li><p>Now go to <code>/Users/example_user/Documents/blog/source</code><br>Create a CNAME file and fill in <code>your-custome-name</code></p>
+</li>
+<li><p>Deploy again</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment"># INFO  Deploy done: git</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>You should be able to load <code>https://your-custome-name/blog</code> page in browser now</p>
+</li>
+</ul>
+<p>Happy blogging!</p>
+<hr>
+<h4 id="System-version"><a href="#System-version" class="headerlink" title="System version"></a>System version</h4><p>System version:<br>mac BigSur</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo-cli: 4.3.0</span><br><span class="line">os: darwin 20.1.0 11.0.1</span><br><span class="line"></span><br><span class="line">node: 18.0.0</span><br><span class="line">v8: 10.1.124.8-node.13</span><br></pre></td></tr></table></figure>
+
+<hr>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>How-to</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2022 春日假正经纽约游记 (一)</title>
     <url>/blog/2022/05/13/NYC/</url>
     <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><p><font size=3><font/><br>对纽约总有种说不清道不明的归属感。明明总计只待了不到一年。可能是因为 “study abroad” 那一学期数节“用脚丈量曼哈顿”课程让我对这片土地的历史、规划、建筑物们有了相较于其它城市更多的了解，也可能是因为布鲁克林大桥上的日落和雪见证过年少时沉默的情爱，又或者只是因为Bryant Park的长椅和鸽子偷食过第一份实习时的午餐。纽约，总让我想起歌词, 踏遍万水千山总有一地故乡。 可能精神上的故乡其中之一确是纽约吧。</p>
@@ -112,117 +223,6 @@
 ]]></content>
       <tags>
         <tag>everyday</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>plugins</title>
-    <url>/blog/2022/04/24/plugins/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="Useful-tag-plugins"><a href="#Useful-tag-plugins" class="headerlink" title="Useful tag-plugins"></a>Useful tag-plugins</h3><h4 id="Adding-the-More-Button"><a href="#Adding-the-More-Button" class="headerlink" title="Adding the More Button"></a>Adding the More Button</h4><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Text</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">Text</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-
-<h4 id="Adding-Image"><a href="#Adding-Image" class="headerlink" title="Adding Image"></a>Adding Image</h4><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% asset<span class="emphasis">_img more.jpg 100% &#x27;&quot;img title&quot; &quot;alt example img&quot;&#x27; %&#125;</span></span><br></pre></td></tr></table></figure>
-
-<img src="/blog/2022/04/24/plugins/more.jpg" class="" title="100% " alt="img title">
-
-<h4 id="Creating-Draft"><a href="#Creating-Draft" class="headerlink" title="Creating Draft"></a>Creating Draft</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server --draft</span><br><span class="line"></span><br><span class="line">hexo publish `filename`</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Blog on GitHub Pages with Custom Domain</title>
-    <url>/blog/2022/04/24/Blog/</url>
-    <content><![CDATA[<link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>If you have a website ready at:<br><code>https://username.github.io</code></p>
-<ul>
-<li>want to host your other repositories at<br><code>https://username.github.io/project1</code><br><code>https://username.github.io/project2</code></li>
-</ul>
-<p>or with a custom domain like:<br><code>https://your-custome-name/project1</code></p>
-<ul>
-<li>host hexo blog at<br><code>https://your-custome-name/blog</code></li>
-</ul>
-<p>Keep on reading!</p>
-<p>If you don’t have a <a href="https://pages.github.com/">Github Page</a> ready yet at <code>https://username.github.io</code>, don’t worry, follow instructions <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">here</a> and then continue for the rest of the steps.</p>
-<span id="more"></span>
-
-<h3 id="Step1-Create-local-blog-folder-with-hexo-cli"><a href="#Step1-Create-local-blog-folder-with-hexo-cli" class="headerlink" title="Step1: Create local blog folder with hexo-cli"></a>Step1: Create local blog folder with hexo-cli</h3><p>follow <a href="https://hexo.io/docs/#Install-Hexo">official website’s instructions</a> to install <code>hexo-cli</code></p>
-<h4 id="Initialize-blog-at-a-given-folder"><a href="#Initialize-blog-at-a-given-folder" class="headerlink" title="Initialize blog at a given folder"></a>Initialize blog at a given folder</h4><p>Let’s say you are currently at <code>/Users/example_user/Documents</code></p>
-<ul>
-<li><p>Option1</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init [folder_name]</span><br><span class="line"><span class="built_in">cd</span> [folder_name]/</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>  Your blog folder will be available at <code>/Users/example_user/Documents/folder_name</code></p>
-</li>
-<li><p>Option2</p>
-<p>  If no folder is provided, Hexo will set up a website in the current directory.</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> blog <span class="comment"># creates a folder</span></span><br><span class="line"><span class="built_in">cd</span> blog <span class="comment"># enter the folder, now you are at /Users/example_user/Documents/blog</span></span><br><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>  Your blog folder will now be available at <code>/Users/example_user/Documents/blog</code></p>
-</li>
-</ul>
-<h4 id="Test-run-blog-locally"><a href="#Test-run-blog-locally" class="headerlink" title="Test run blog locally"></a>Test run blog locally</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line"><span class="comment"># INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Push-blog-x2F-to-github"><a href="#Push-blog-x2F-to-github" class="headerlink" title="Push blog&#x2F; to github"></a>Push blog&#x2F; to github</h4><p>Follow <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo#create-a-repository">instructions</a> in github to create a new repository in github with name {your-blog-name}</p>
-<p>Very important note:</p>
-<ul>
-<li><p>github pages renders “child” project via repository name.<br>aka, if you want your blogs be available at <code>https://username.github.io/your-blog-name</code>, your github repository that hosts your blog has to be names as <code>your-blog</code>.</p>
-</li>
-<li><p>if you are using a personal free github account, you can only choose <code>public</code> for a repository to be Github Pages</p>
-</li>
-<li><p>at this point, don’t add any README.md or set HEAD things that you normally do for a github repo. Hexo will take care of those in the next step.</p>
-</li>
-</ul>
-<h3 id="Step3-Deployment-Setup"><a href="#Step3-Deployment-Setup" class="headerlink" title="Step3 Deployment Setup"></a>Step3 Deployment Setup</h3><p>Install <a href="https://github.com/hexojs/hexo-deployer-git">hexojs&#x2F;hexo-deployer-git</a> for deployment.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>Then update config file <code>/Users/example_user/Documents/blog/_config.yml</code> with your repo info</p>
-<p>You can find it here:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">~~~~~~~~~~~~~~~~~~</span> <span class="string">_config.yml</span> <span class="string">~~~~~~~~~~~~~~~~~~</span></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:example_user/blog.git</span>  <span class="comment"># add your newly created repo address here</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">gh-pages</span></span><br></pre></td></tr></table></figure>
-
-<p>Drum roll, you are almost there!<br>Let’s now do</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment"># INFO  Deploy done: git</span></span><br></pre></td></tr></table></figure>
-
-<p>Your blog now should be available at <code>https://example-user.github.io/blog</code></p>
-<h3 id="Step2-Use-Custom-Domain"><a href="#Step2-Use-Custom-Domain" class="headerlink" title="Step2 Use Custom Domain"></a>Step2 Use Custom Domain</h3><ul>
-<li><p>Register a domain name at any DNS service that you have chosen. I used <code>www.cloudns.net</code> as my DNS service.</p>
-</li>
-<li><p>Navigate to your github main example_user.github.io repo -&gt; Settings -&gt; Pages -&gt; Custom domain<br>Fill in your registered domain. See detail instruction <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">here</a> bullet point4.</p>
-</li>
-<li><p>The following is just a detailed explanation for the above link’s bullet point5:</p>
-</li>
-<li><p>Configure <strong>Both</strong> subdomain and APEX domain, see difference <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages#supported-custom-domains">here</a> if interested.</p>
-</li>
-<li><p>Inside your DNS service, find <code>DNS Hosting</code> or <code>DNS Zone</code> that allows you to add <code>new record</code></p>
-<p>Create the following records per Github instruction:</p>
-<ul>
-<li><code>CNAME record</code> instruction <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">here</a></li>
-<li><code>A record</code> instruction <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">here</a></li>
-</ul>
-</li>
-<li><p>Continue following the Github instructions bullet point 6-9</p>
-</li>
-<li><p>If everything goes well, you should be able to load <code>https://your-custome-name</code> page in browser now</p>
-</li>
-</ul>
-<h3 id="Step3-Update-Custom-Domain-in-Blog-x2F"><a href="#Step3-Update-Custom-Domain-in-Blog-x2F" class="headerlink" title="Step3 Update Custom Domain in Blog&#x2F;"></a>Step3 Update Custom Domain in Blog&#x2F;</h3><ul>
-<li><p>Now go to <code>/Users/example_user/Documents/blog/source</code><br>Create a CNAME file and fill in <code>your-custome-name</code></p>
-</li>
-<li><p>Deploy again</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment"># INFO  Deploy done: git</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>You should be able to load <code>https://your-custome-name/blog</code> page in browser now</p>
-</li>
-</ul>
-<p>Happy blogging!</p>
-<hr>
-<h4 id="System-version"><a href="#System-version" class="headerlink" title="System version"></a>System version</h4><p>System version:<br>mac BigSur</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo-cli: 4.3.0</span><br><span class="line">os: darwin 20.1.0 11.0.1</span><br><span class="line"></span><br><span class="line">node: 18.0.0</span><br><span class="line">v8: 10.1.124.8-node.13</span><br></pre></td></tr></table></figure>
-
-<hr>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>How-to</tag>
       </tags>
   </entry>
 </search>
